@@ -1,0 +1,25 @@
+﻿@using Nop.Plugin.BrainStation.QuickView.Models
+@using Nop.Web.Framework
+@model BsQuickViewModel
+@using Nop.Core.Domain.Seo;
+@using Nop.Core.Infrastructure;
+@using Nop.Web.Models.Catalog;
+@using Nop.Web.Framework.UI
+
+<!--product breadcrumb-->
+
+
+@{
+    Layout = "~/Administration/Views/Shared/_AdminLayout.cshtml";
+	
+}
+<div class="section-header">
+    <div class="title">
+        <img src="@Url.Content("~/Administration/Content/images/ico-content.png")" alt="" />
+        @T("admin.plugin.brainstation.quickview.help")
+    </div>
+        
+</div>
+
+Thanks for using Bs Quick View Plugin <br/><br/>
+You can get help from <a href="http://nop-station.com/Common/Support">Support</a> link 

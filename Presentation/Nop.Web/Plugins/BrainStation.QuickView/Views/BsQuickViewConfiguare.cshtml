@@ -1,0 +1,115 @@
+﻿@using Nop.Plugin.BrainStation.QuickView.Models
+@using Nop.Web.Framework
+@model BsQuickViewSettingsModel
+@using Nop.Core.Domain.Seo;
+@using Nop.Core.Infrastructure;
+@using Nop.Web.Models.Catalog;
+@using Nop.Web.Framework.UI
+
+<!--product breadcrumb-->
+
+
+
+@using (Html.BeginForm("Save", "Admin/Plugin/QuickView/Settings", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+      @Html.AntiForgeryToken()
+    <div class="section-header">
+        <div class="title">
+            <img src="@Url.Content("~/Administration/Content/images/ico-content.png")" alt="" />
+            @T("admin.plugin.brainstation.quickview.settings")
+        </div>
+        <div class="options">
+            <button type="submit" name="save" value="save" class="k-button">@T("admin.plugin.brainstation.quickview.save")</button>
+            
+        </div>
+    </div>
+    @Html.ValidationSummary(false)
+   
+    <table class="adminContent">
+        
+        <tr>
+            <td class="adminTitle">
+               
+                @T("Plugins.BsQuickView.Fields.EnableWidget") :
+            </td>
+            <td class="adminData">
+                @Html.EditorFor(model => model.EnableWidget)
+               
+            </td>
+        </tr>
+<tr>
+            <td colspan="2">If you check this opton you will enable the widget of the Bs Quick View plugin. Disabling the checking will make the all settings of Bs Quick View inactive.</td>
+        </tr>
+        <tr>
+            <td colspan="2"><hr/></td>
+        </tr>
+
+        <tr>
+            <td class="adminTitle">
+               
+                @T("Plugins.BsQuickView.Fields.EnableEnlargePicture") :
+            </td>
+            <td class="adminData">
+                @Html.EditorFor(model => model.EnableEnlargePicture)
+               
+            </td>
+        </tr>
+<tr>
+            <td colspan="2">If you check this opton you will have a splendid view of enlarged picture on each product box items .After checking & saving it reload your main store page and hover on the product pictures in product box and see the awosomeness.</td>
+        </tr>
+        <tr>
+            <td colspan="2"><hr/></td>
+        </tr>
+        <tr>
+            <td class="adminTitle">
+               
+                @T("Plugins.BsQuickView.Fields.ShowAlsoPurchased") :
+            </td>
+            <td class="adminData">
+                @Html.EditorFor(model => model.ShowAlsoPurchased)
+               
+            </td>
+        </tr>
+<tr>
+            <td colspan="2">This Option will activate showing the Products which was also purchased with the clicked product on Modal named "Customers who bought this item also bought".</td>
+        </tr>
+        <tr>
+            <td colspan="2"><hr/></td>
+        </tr>
+        <tr>
+            <td class="adminTitle">
+               
+                @T("Plugins.BsQuickView.Fields.ShowRelatedProducts") :
+            </td>
+            <td class="adminData">
+                @Html.EditorFor(model => model.ShowRelatedProducts)
+               
+            </td>
+        </tr>
+<tr>
+            <td colspan="2">This Option will activate showing the related Products on Modal.</td>
+        </tr>
+        <tr>
+            <td colspan="2"><hr/></td>
+        </tr>
+        <tr>
+            <td class="adminTitle">
+               
+                @T("Plugins.BsQuickView.Fields.ButtonContainerName") :
+            </td>
+            <td class="adminData">
+                @Html.EditorFor(model => model.ButtonContainerName)
+               
+            </td>
+        </tr>
+<tr>
+            <td colspan="2">Provide the class name in which the button "Quick View" will appear. Remember add a '.' before class name . eg(.buttons)</td>
+        </tr>
+
+        
+
+        
+    </table>
+
+   
+}

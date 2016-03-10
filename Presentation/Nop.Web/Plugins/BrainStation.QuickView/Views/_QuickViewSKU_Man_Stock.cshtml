@@ -1,0 +1,51 @@
+﻿@model ProductDetailsModel
+@using Nop.Web.Models.Catalog;
+@*SKU*@
+@if (!String.IsNullOrWhiteSpace(Model.Sku) && Model.ShowSku)
+{
+    <div class="bs-sku">
+        <span class="bs-product-details-label "><strong>@T("Products.Sku"): </strong></span><span class="value" itemprop="sku">@Model.Sku</span>
+    </div>
+}
+@*Manufacturer part number*@
+@if (!String.IsNullOrWhiteSpace(Model.ManufacturerPartNumber) && Model.ShowManufacturerPartNumber)
+{
+    <div class="bs-manufacturer-part-number">
+        <span class="bs-product-details-label "><strong>@T("Products.ManufacturerPartNumber"): </strong> </span><span class="value">@Model.ManufacturerPartNumber</span>
+    </div>
+}
+@*GTIN*@
+@if (!String.IsNullOrWhiteSpace(Model.Gtin) && Model.ShowGtin)
+{
+    <div class="bs-gtin">
+        <span class="bs-product-details-label "><strong>@T("Products.GTIN"): </strong></span><span class="value">@Model.Gtin</span>
+    </div>
+}
+@*Stock availability*@
+@if (!String.IsNullOrWhiteSpace(Model.StockAvailability))
+{
+    <div class="bs-stock">
+        <span class="bs-product-details-label "><strong>@T("Products.Availability"): </strong></span><span class="value">@Model.StockAvailability</span>
+    </div>
+}
+@*Delivery date*@
+@if (Model.FreeShippingNotificationEnabled && Model.IsFreeShipping)
+{
+    <div class="bs-free-shipping"><strong>Free Shipping</strong></div>
+}
+@*Delivery date*@
+@if (!String.IsNullOrWhiteSpace(Model.DeliveryDate))
+{
+    <div class="bs-delivery-date">
+        <span class="bs-product-details-label "><strong>@T("Products.DeliveryDate"): </strong></span><span class="value">@Model.DeliveryDate</span>
+    </div>
+}
+@*Vendor*@
+@if (Model.ShowVendor)
+{
+    <div class="bs-product-vendor">
+        <span class="bs-product-details-label "><strong>@T("Products.Vendor"): </strong></span><span class="value">@Model.VendorModel.Name</span>
+    </div>
+}
+
+<br/>

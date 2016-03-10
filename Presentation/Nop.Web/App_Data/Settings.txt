@@ -1,0 +1,2 @@
+DataProvider: sqlserver
+DataConnectionString: Data Source=127.0.0.1;Initial Catalog=DbShop;Integrated Security=False;Persist Security Info=False;User ID=phone;Password=123456

@@ -1,0 +1,8 @@
+Group: BrainStation
+FriendlyName: Bs Quick View
+SystemName: BrainStation.QuickView
+Version: 1.00
+SupportedVersions: 3.70
+Author: BrainStation-23
+DisplayOrder: 1
+FileName: Nop.Plugin.BrainStation.QuickView.dll

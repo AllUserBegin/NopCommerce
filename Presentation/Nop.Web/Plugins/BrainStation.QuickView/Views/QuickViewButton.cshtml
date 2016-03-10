@@ -1,0 +1,116 @@
+﻿@model Nop.Plugin.BrainStation.QuickView.Models.BsQuickViewSettingsModel
+@using System.Web.Mvc.Html;
+@using Nop.Web.Framework.UI
+@if(Model.EnableWidget)
+{
+
+
+    Html.AppendScriptParts("~/Plugins/BrainStation.QuickView/Scripts/api.shared.js");
+    Html.AppendScriptParts("~/Plugins/BrainStation.QuickView/Scripts/api.bsmenu.js");
+    Html.AppendScriptParts("~/Plugins/BrainStation.QuickView/Scripts/jquery.media.preview.js");
+
+
+
+
+    Html.AppendCssFileParts("~/Plugins/BrainStation.QuickView/Content/styles.css");
+    Html.AppendCssFileParts("~/Plugins/BrainStation.QuickView/Content/media.preview.css");
+
+
+
+
+
+    <script>
+        $(function() {
+
+//Here starts the quick view modal plugin
+
+            var quick_view_modal = '<div id="quick-view-modal"></div>';
+            var quick_view_loading_modal = '<div id="quick-view-loading-modal_div">' +
+                '<div  class="modal modal-static quick-view-loading-modal"  id="quick-view-loading-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">' +
+                ' <div class="modal-dialog">' +
+                '<div class="modal-content">' +           
+                '<div class="modal-body">' +
+                '<div class="row">' +
+                '<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">' +
+                '<div class="align-in-center"><img src="/Plugins/BrainStation.QuickView/Content/loading.gif"/></div>' +
+                '</div>' +              
+                '</div>' +              
+                '</div>' +           
+                '</div>' +
+                '</div>' +
+                '</div>' +            
+                '</div>';
+
+            $("body").append(quick_view_modal);
+            $("body").append(quick_view_loading_modal);
+
+            
+            $("body div[data-productid]").each(function () {
+
+                var quick_view_button = '<a data-product-id="' + $(this).data("productid") + '" type="button" class="quick-view-plugin-btn btn btn-default add-to-cart"><i class="fa fa-search"></i>&nbsp;Quick View</a>';
+
+                var arr = "@Model.ButtonContainerName".split(',');
+                for (var i = 0; i < arr.length; i++) {
+                    $(this).find(arr[i]).append(quick_view_button);
+                   
+                }
+               
+                
+               
+            });
+            
+
+
+            $(".quick-view-plugin-btn.btn").on("click", function() {
+                $("#quick-view-loading-modal").modal("show");
+
+                var product_id = $(this).data("product-id");
+                api.viewProductDetails({
+                    data: { productId: product_id }
+                });
+
+            });
+
+            
+        });
+    </script>
+}
+@if(Model.EnableWidget && Model.EnableEnlargePicture)
+{
+    <script>
+        $(document).ready(function() {
+            $("body div[data-productid]").find(".picture img").each(function () {
+
+                var image = $(this);
+                var extension = image.attr('src').split('.').pop();
+                var value = (image.attr('src').split("_"));
+                value = (value[value.length - 1]);
+                var dataValue = (image.attr('src').replace(value, '')).slice(0, -1);
+                image.attr("data-src", dataValue + '.' + extension);
+                
+
+                var img = new Image();
+                img.onload = function() {
+                    image.attr("data-height", img.height);
+                    image.attr("data-width", img.width);
+                    $(document).trigger("customEvent/imageLoaded");
+                };
+                img.src = dataValue + '.' + extension;
+
+                $(this).attr("title", "");
+
+                //$(this).attr("data-height", "400");
+                //$(this).attr("data-width", "400");
+            });
+
+            $(document).on("customEvent/imageLoaded", function() {
+                $('body div[data-productid] .picture img').mediaPreview({
+                    loading_text: 'Loading, please wait...',
+                    offset: 20
+                });
+            });
+        });
+    </script>
+}
+
+

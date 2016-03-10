@@ -1,0 +1,4 @@
+﻿Copy and Paste the Folder named 'BrainStation.QuickView' to the 'Plugins' folder.
+On the Admin panel reload the list of plugins and install the plugin named 'Bs Quick View'
+After Installation Click the 'Edit' button of that plugin and make it active .
+

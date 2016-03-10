@@ -1,0 +1,64 @@
+/**
+ * jQuery mediaPreview
+ *
+ * @url         http://www.mewsoft.com/jquery/media-preview/
+ * @author      Dr. Ahmed Amin Elsheshtawy, Ph.D. <sales@mewsoft.com>
+ * @version     1.0
+ * @date        30.05.2011
+ */
+
+/* Media preview start*/
+#mediaPreviewWrapper {
+	position: absolute;
+	z-index: 110;
+	display: none;
+	top: 0;
+	left: 0;
+	background-color: #ffffff;
+	font-size: 11px;
+	color: #4B4B4B;
+	padding: 15px 15px 15px 15px;
+	border: 1px solid #9d9d9d;
+	/*round corners for the preview wrapper*/
+	-moz-border-radius: 8px;
+	-webkit-border-radius: 8px;
+	border-radius: 8px;
+     /*max-height: 600px;
+    max-width: 600px;*/
+}
+
+#mediaPreviewTitle {
+	font-size: 16px;
+	display: none; /* remove this line to display the preview image title*/
+}
+
+#mediaPreviewBody {
+	position: relative;
+}
+
+#mediaPreviewImage {
+	margin: 0px auto 0px auto;
+	border: 0px solid #e2e2e2;
+	/*round corners for the preview image*/
+	-moz-border-radius: 8px;
+	-webkit-border-radius: 8px;
+	border-radius: 8px;
+    /*max-height: 600px;
+    max-width: 600px;*/
+}
+
+#mediaPreviewProgBar {
+	position: absolute;
+	width: 125px;
+	padding: 10px 10px 30px 10px;
+	top: 45%;
+	left: 50%;
+	margin-left: -67px;
+	border: 1px solid #209dec;
+	background: #eef6ff url('media.preview.progbar.gif') no-repeat center 30px;
+	color: #209dec;
+	font-family: Arial,Tahoma,Helvetica,sans;
+	font-size: 10px;
+	text-align: left;
+}
+/* Media preview end*/
